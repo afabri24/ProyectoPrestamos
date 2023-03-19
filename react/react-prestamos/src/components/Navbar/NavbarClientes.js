@@ -22,7 +22,7 @@ const Navbar=()=>{
           <Link className="nav-link" to="/">Ver hisorial</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/">Estados de prestamos prueba</Link>
+          <Link className="nav-link" to="/">Estados de prestamos prueba p</Link>
         </li>
         <li className="nav-item">
             <a  class="text-dark">
