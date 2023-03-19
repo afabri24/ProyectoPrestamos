@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 // Componentes
-import NavbarClientes from './components/Navbar/NavbarClientes';
-import EmpleadoList from './components/Empleado/EmpleadoList';
-import EmpleadoForm from './components/Empleado/EmpleadoForm';
+import Navbar from './components/Navbar/Navbar';
+import ClienteList from './components/Cliente/ClienteList';
+import ClienteForm from './components/Cliente/ClienteForm';
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import './index.css';
@@ -15,11 +15,11 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <NavbarClientes/>
+        <Navbar/>
         <div className='container my-4'>
             <Switch>
-                <Route exact path='/' component={EmpleadoList}/>
-                <Route path='/empleadoForm' component={EmpleadoForm}/>
+                <Route exact path='/' component={ClienteList}/>
+                <Route path='/clienteForm' component={ClienteForm}/>
             </Switch>
          </div>
     </BrowserRouter>
