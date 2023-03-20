@@ -8,6 +8,8 @@ import Navbar from './components/Navbar/Navbar';
 import ClienteList from './components/Cliente/ClienteList';
 import ClienteForm from './components/Cliente/ClienteForm';
 
+import SimulacionPrestamo from './components/Simulacion/SimulacionPrestamo';
+
 import "bootstrap/dist/css/bootstrap.min.css"
 import './index.css';
 
@@ -20,6 +22,7 @@ root.render(
             <Switch>
                 <Route exact path='/' component={ClienteList}/>
                 <Route path='/clienteForm' component={ClienteForm}/>
+                <Route path='/simulacion' component={SimulacionPrestamo}/>
             </Switch>
          </div>
     </BrowserRouter>
