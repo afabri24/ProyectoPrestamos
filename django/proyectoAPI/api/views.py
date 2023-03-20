@@ -2,12 +2,12 @@ from django.http.response import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from .models import Empleado
+from .models import Cliente
 import json
 
 # Create your views here.
 
-class EmpleadoView(View):
+class ClienteView(View):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
@@ -15,53 +15,54 @@ class EmpleadoView(View):
 
     def get(self, request, id = 0):
         if (id > 0):
-            empleados = list(Empleado.objects.filter(id=id).values())
-            if len(empleados) > 0:
-                empleado = empleados[0]
-                datos={'message':"Seccess",'empleados':empleado}
+            clientes = list(Cliente.objects.filter(id=id).values())
+            if len(clientes) > 0:
+                cliente = clientes[0]
+                datos={'message':"Seccess",'clientes':cliente}
             else:
-                datos = {'message':"Empleados not found"}
+                datos = {'message':"Clientes not found"}
             return JsonResponse(datos)
         else: 
-            empleados = list(Empleado.objects.values())
-            if len(empleados)>0:
-                datos={'message':"Seccess",'empleados':empleados}
+            clientes = list(Cliente.objects.values())
+            if len(clientes)>0:
+                datos={'message':"Seccess",'clientes':clientes}
             else:
-                datos={'message':"Empleados not found"}
+                datos={'message':"Clientes not found"}
             return JsonResponse(datos)
 
     def post(self, request):
         #print(request.body)
         jd = json.loads(request.body)
-        Empleado.objects.create(name = jd['name'], apellidos = jd['apellidos'],
+        Cliente.objects.create(name = jd['name'], apellidos = jd['apellidos'],
                                 fechaNacimiento = jd['fechaNacimiento'], rfc = jd['rfc'],
-                                correo = jd['correo'], telefono = jd['telefono'])
+                                correo = jd['correo'], telefono = jd['telefono'], password = jd['password'])
         print(jd)
         datos = {'message':"Success"}
         return JsonResponse(datos)
 
     def put(self, request, id):
         jd = json.loads(request.body)
-        empleados = list(Empleado.objects.filter(id=id).values())
-        if len(empleados) > 0:
-            empleado=Empleado.objects.get(id=id)
-            empleado.name=jd['name']
-            empleado.apellidos = jd['apellidos']
-            empleado.fechaNacimiento = jd['fechaNacimiento']
-            empleado.rfc = jd['rfc']
-            empleado.correo = jd['correo']
-            empleado.telefono = jd['telefono']
-            empleado.save()
+        clientes = list(Cliente.objects.filter(id=id).values())
+        if len(clientes) > 0:
+            cliente=Cliente.objects.get(id=id)
+            ClienteView.name=jd['name']
+            cliente.apellidos = jd['apellidos']
+            cliente.fechaNacimiento = jd['fechaNacimiento']
+            cliente.rfc = jd['rfc']
+            cliente.correo = jd['correo']
+            cliente.telefono = jd['telefono']
+            cliente.password = jd['password']
+            cliente.save()
             datos = {'message': "Success"}
         else:
-            datos={'message':"Empleados not found"}
+            datos={'message':"clientes not found"}
         return JsonResponse(datos)
 
     def delete(self, request, id):
-        empleados = list(Empleado.objects.filter(id=id).values())
-        if len(empleados) > 0:
-            Empleado.objects.filter(id=id).delete()
+        clientes = list(Cliente.objects.filter(id=id).values())
+        if len(clientes) > 0:
+            Cliente.objects.filter(id=id).delete()
             datos = {'message': "Success"}
         else:
-            datos={'message':"Empleados not found"}
+            datos={'message':"Clientes not found"}
         return JsonResponse(datos)
