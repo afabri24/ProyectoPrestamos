@@ -21,6 +21,10 @@ root.render(
                 <Route exact path='/' component={ClienteList}/>
                 <Route path='/clienteForm' component={ClienteForm}/>
                 <Route path='/updateCliente/:id' component={ClienteForm}/>
+<<<<<<< Updated upstream
+=======
+                <Route path='/simulacion' component={SimulacionPrestamo}/>
+>>>>>>> Stashed changes
             </Switch>
          </div>
     </BrowserRouter>
