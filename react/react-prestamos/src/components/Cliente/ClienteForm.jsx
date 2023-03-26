@@ -1,32 +1,103 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import * as ClienteServer from "./ClienteServer";
 
 const ClienteForm=()=>{
     const history=useHistory();
-    const initialState={id:0,name:"",apellidos:"",fechaNacimiento:"",rfc:"",correo:"",telefono:""};
+<<<<<<< Updated upstream
+    const params = useParams();
+=======
+    const params=useParams();
 
-    const [cliente, setCliente]=useState(initialState);
+    //console.log(params);
 
-    const handleInputChange=(e)=>{
-        setCliente({...cliente, [e.target.name]: e.target.value });
+    const initialState ={ id:0, name:"",apellidos:"",fechaNacimiento:"",rfc:"",correo:"",telefono:"",password:""};
+>>>>>>> Stashed changes
+
+    const initialState={id:0,name:"",apellidos:"",fechaNacimiento:"",rfc:"",correo:"",telefono:"", password:""};
+
+    const [ cliente, setCliente ]=useState(initialState);
+
+    const handleInputChange = (e) => {
+        setCliente({ ...cliente, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
+<<<<<<< Updated upstream
+      e.preventDefault();
+      try {
+        let res;
+        if (!params.id) {
+          res = await ClienteServer.registerCliente(cliente);
+          const data = await res.json();
+          if (data.message === "Success") {
+            setCliente(initialState);
+          }
+        } else {
+          await ClienteServer.updateCliente(params.id, cliente);
+=======
         e.preventDefault();
         try{
             let res;
-            res = await ClienteServer.registerCliente(cliente);
-            const data = await res.json();
-            if(data.message==="Success"){
+            if (!params.id) {
+              res = await ClienteServer.registerCliente(cliente);
+              const data = await res.json();
+              if (data.message === "Success") {
                 setCliente(initialState);
+              }
+            } else {
+              await ClienteServer.updateCliente(params.id, cliente);
             }
             history.push("/");
         }catch(error){
             console.log(error);
+>>>>>>> Stashed changes
         }
+        history.push("/");
+      } catch (error) {
+        console.log(error);
+      }
     };
+
+    const getCliente = async (clienteId) => {
+      try {
+        const res = await ClienteServer.getCliente(clienteId);
+        const data = await res.json();
+        const {name, apellidos, fechaNacimiento, rfc, correo, telefono , password} = data.cliente;
+        setCliente({ name,  apellidos, fechaNacimiento, rfc, correo, telefono , password });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      if (params.id) {
+        getCliente(params.id);
+      }
+      // eslint-disable-next-line
+    }, []);
+
+
+
+    const getCliente = async (clienteId) => {
+      try {
+        const res = await ClienteServer.getCliente(clienteId);
+        const data = await res.json();
+        const nom = clienteId.name;
+        const { name } = data.cliente;
+        setCliente({name:nom });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
+    useEffect(() => {
+      if (params.id) {
+        getCliente(params.id);
+      }
+      // eslint-disable-next-line
+    }, [])
 
 
     return (<div className="col-md-3 mx-auto">
@@ -42,7 +113,7 @@ const ClienteForm=()=>{
       </div>
       <div className="mb-3">
         <label className="form-label">Fecha de Nacimiento</label>
-        <input type="date" name="fechaNacimiento" value={cliente.fechaNacimiento} onChange={handleInputChange} className="form-control" maxLength="100" required />
+        <input type="text" name="fechaNacimiento" value={cliente.fechaNacimiento} onChange={handleInputChange} className="form-control" maxLength="100" required />
       </div>
       <div className="mb-3">
         <label className="form-label">RFC</label>
@@ -50,27 +121,34 @@ const ClienteForm=()=>{
       </div>
       <div className="mb-3">
         <label className="form-label">Correo</label>
-        <input type="email" name="correo" value={cliente.correo} onChange={handleInputChange} className="form-control" maxLength="100" required />
+        <input type="text" name="correo" value={cliente.correo} onChange={handleInputChange} className="form-control" maxLength="100" required />
       </div>
       <div className="mb-3">
         <label className="form-label">Telefono</label>
         <input type="text" name="telefono" value={cliente.telefono} onChange={handleInputChange} className="form-control" maxLength="100" required />
       </div>
-
       <div className="mb-3">
         <label className="form-label">Password</label>
-        <input type="text" name="password" value={cliente.paswword} onChange={handleInputChange} className="form-control" minLength="8" maxLength="8" required />
+        <input type="text" name="password" value={cliente.password} onChange={handleInputChange} className="form-control" minLength="8" maxLength="8" required />
       </div>
-     
       <div className="d-grid gap-2">
-
-          <button type="submit" className="btn btn-block btn-primary">
-            Registrar
-          </button>
-
+          {params.id ? (
+            <button type="submit" className="btn btn-block btn-primary">
+              Update
+            </button>
+          ) : (
+            <button type="submit" className="btn btn-block btn-success">
+              Register
+            </button>
+          )}
+<<<<<<< Updated upstream
       </div>
+=======
+        </div>
+>>>>>>> Stashed changes
     </form>
-  </div>)
+  </div>
+  );
 };
 
 export default ClienteForm;

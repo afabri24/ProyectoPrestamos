@@ -13,7 +13,6 @@ import SimulacionPrestamo from './components/Simulacion/SimulacionPrestamo';
 import "bootstrap/dist/css/bootstrap.min.css"
 import './index.css';
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
@@ -22,6 +21,9 @@ root.render(
             <Switch>
                 <Route exact path='/' component={ClienteList}/>
                 <Route path='/clienteForm' component={ClienteForm}/>
+
+                <Route path='/updateCliente/:id' component={ClienteForm}/>
+                <Route path='/simulacion' component={SimulacionPrestamo}/>
                 <Route path='/simulacion' component={SimulacionPrestamo}/>
             </Switch>
          </div>

@@ -1,7 +1,15 @@
 const API_URL = "http://127.0.0.1:8000/api/clientes/";
 
 export const listClientes = async () => {
-    return await fetch(API_URL)
+    return await fetch(API_URL);
+};
+
+export const getCliente = async (clienteId) => {
+    return await fetch(`${API_URL}${clienteId}`);
+};
+
+export const getCliente = async (clienteId) => {
+    return await fetch(`${API_URL}${clienteId}`);
 };
 
 export const registerCliente= async (newCliente) => {
@@ -19,5 +27,43 @@ export const registerCliente= async (newCliente) => {
             "telefono":String(newCliente.telefono).trim(),
             "password":String(newCliente.password).trim(),
         })
+    });
+};
+
+export const updateCliente = async (clienteId, updatedCliente) => {
+    return await fetch(`${API_URL}${clienteId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+<<<<<<< Updated upstream
+            "name": String(updatedCliente.name).trim(),
+            "apellidos": String(updatedCliente.apellidos).trim(),
+            "fechaNacimiento": String(updatedCliente.fechaNacimiento).trim(),
+            "rfc": String(updatedCliente.rfc).trim(),
+            "correo": String(updatedCliente.correo).trim(),
+            "telefono": String(updatedCliente.telefono).trim(),
+            "password": String(updatedCliente.password).trim(),
+=======
+            "name":String(updatedCliente.name).trim(),
+            "apellidos":String(updatedCliente.apellidos).trim(),
+            "fechaNacimiento":String(updatedCliente.fechaNacimiento).trim(),
+            "rfc":String(updatedCliente.rfc).trim(),
+            "correo":String(updatedCliente.Ccorreo).trim(),
+            "telefono":String(updatedCliente.telefono).trim(),
+            "password":String(updatedCliente.password).trim(),
+>>>>>>> Stashed changes
+        })
+    });
+};
+
+export const deleteCliente = async (clienteId) => {
+<<<<<<< Updated upstream
+    return await fetch (`${API_URL}${clienteId}`, {
+=======
+    return await fetch(`${API_URL}${clienteId}`, {
+>>>>>>> Stashed changes
+        method: 'DELETE'
     });
 };
