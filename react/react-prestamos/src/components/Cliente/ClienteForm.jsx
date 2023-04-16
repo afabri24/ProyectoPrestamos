@@ -5,15 +5,7 @@ import * as ClienteServer from "./ClienteServer";
 
 const ClienteForm=()=>{
     const history=useHistory();
-<<<<<<< Updated upstream
     const params = useParams();
-=======
-    const params=useParams();
-
-    //console.log(params);
-
-    const initialState ={ id:0, name:"",apellidos:"",fechaNacimiento:"",rfc:"",correo:"",telefono:"",password:""};
->>>>>>> Stashed changes
 
     const initialState={id:0,name:"",apellidos:"",fechaNacimiento:"",rfc:"",correo:"",telefono:"", password:""};
 
@@ -24,7 +16,6 @@ const ClienteForm=()=>{
     };
 
     const handleSubmit = async (e) => {
-<<<<<<< Updated upstream
       e.preventDefault();
       try {
         let res;
@@ -36,23 +27,6 @@ const ClienteForm=()=>{
           }
         } else {
           await ClienteServer.updateCliente(params.id, cliente);
-=======
-        e.preventDefault();
-        try{
-            let res;
-            if (!params.id) {
-              res = await ClienteServer.registerCliente(cliente);
-              const data = await res.json();
-              if (data.message === "Success") {
-                setCliente(initialState);
-              }
-            } else {
-              await ClienteServer.updateCliente(params.id, cliente);
-            }
-            history.push("/");
-        }catch(error){
-            console.log(error);
->>>>>>> Stashed changes
         }
         history.push("/");
       } catch (error) {
@@ -80,7 +54,7 @@ const ClienteForm=()=>{
 
 
 
-    const getCliente = async (clienteId) => {
+     getCliente = async (clienteId) => {
       try {
         const res = await ClienteServer.getCliente(clienteId);
         const data = await res.json();
@@ -141,11 +115,7 @@ const ClienteForm=()=>{
               Register
             </button>
           )}
-<<<<<<< Updated upstream
       </div>
-=======
-        </div>
->>>>>>> Stashed changes
     </form>
   </div>
   );

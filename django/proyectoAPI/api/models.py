@@ -12,3 +12,15 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=10)
     password = models.CharField(max_length=12)
 
+
+class Prestamo(models.Model):
+    montoPrestar = models.CharField(max_length=20)
+    interes = models.CharField(max_length=20)
+    pagoMensual = models.CharField(max_length=30)
+    numeroCliente = models.CharField(max_length=13)
+    numeroEmpleado = models.CharField(max_length=50)
+    fechaPrestamo = models.CharField(max_length=10)
+    fechaPago = models.CharField(max_length=12)
+
+    
+

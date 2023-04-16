@@ -1,5 +1,3 @@
-
-// import './prestamo.js.js'
 import React from 'react';
 
 function App() {

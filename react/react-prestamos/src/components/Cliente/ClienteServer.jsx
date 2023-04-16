@@ -8,10 +8,6 @@ export const getCliente = async (clienteId) => {
     return await fetch(`${API_URL}${clienteId}`);
 };
 
-export const getCliente = async (clienteId) => {
-    return await fetch(`${API_URL}${clienteId}`);
-};
-
 export const registerCliente= async (newCliente) => {
     return await fetch(API_URL,{
         method:'POST',
@@ -37,15 +33,6 @@ export const updateCliente = async (clienteId, updatedCliente) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-<<<<<<< Updated upstream
-            "name": String(updatedCliente.name).trim(),
-            "apellidos": String(updatedCliente.apellidos).trim(),
-            "fechaNacimiento": String(updatedCliente.fechaNacimiento).trim(),
-            "rfc": String(updatedCliente.rfc).trim(),
-            "correo": String(updatedCliente.correo).trim(),
-            "telefono": String(updatedCliente.telefono).trim(),
-            "password": String(updatedCliente.password).trim(),
-=======
             "name":String(updatedCliente.name).trim(),
             "apellidos":String(updatedCliente.apellidos).trim(),
             "fechaNacimiento":String(updatedCliente.fechaNacimiento).trim(),
@@ -53,17 +40,12 @@ export const updateCliente = async (clienteId, updatedCliente) => {
             "correo":String(updatedCliente.Ccorreo).trim(),
             "telefono":String(updatedCliente.telefono).trim(),
             "password":String(updatedCliente.password).trim(),
->>>>>>> Stashed changes
         })
     });
 };
 
 export const deleteCliente = async (clienteId) => {
-<<<<<<< Updated upstream
-    return await fetch (`${API_URL}${clienteId}`, {
-=======
     return await fetch(`${API_URL}${clienteId}`, {
->>>>>>> Stashed changes
         method: 'DELETE'
     });
 };
