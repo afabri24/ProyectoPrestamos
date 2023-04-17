@@ -116,7 +116,7 @@
 //     PagoMensual()
 //     calcularTotalPrestamo();
 
-//     var columnas = ['No°', 'Fecha', 'Mensualidad', 'Intereses', 'Impuestos', 'Capital', 'Insuluto']
+    // var columnas = ['No°', 'Fecha', 'Mensualidad', 'Intereses', 'Impuestos', 'Capital', 'Insuluto']
 
 //     var amortizaciones = document.getElementById('amortizaciones')
 //     var tabla = document.createElement('table')
