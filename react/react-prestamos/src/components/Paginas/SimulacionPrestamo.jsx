@@ -1,82 +1,80 @@
 
 
-export default function Simulador() {
-  return (
-    <>
-    <h2>Pagina Simulacion (public - private)</h2>
-    </>
-  );
-      
-}
-
-// import React from 'react';
-// import styled from 'styled-components';
-
-// function App() {
-
-//   const simularPrestamo = () => {
-//     console.log("hola");
-//   }
-
+// export default function Simulador() {
 //   return (
 //     <>
-//       <SimuladorC>
-//         <div id="contenedor">
-//           <div className="header">
-//             <h2>Solicitud de préstamo</h2>
-//           </div>
-//           <div name="frmPrestamo" id="frmPrestamo">
-
-//             <div className="control">
-//               <label for="fecha">Fecha: <input type="date" name="fecha" id="fecha" placeholder="fecha" /></label>
-//             </div>
-
-//             <div className="control">
-//               <label for="monto">Monto:
-//                 <input type="number" name="monto" id="monto" placeholder="monto" min="500" step="500" reque></input>
-//               </label>
-//             </div>
-
-//             <div className="control">
-//               <label for="periodo">Periodo de pago:
-//                 <select name="periodo" id="periodo">
-//                   <option value="semanal">Semanal</option>
-//                   <option value="quincenal">Quincenal</option>
-//                   <option value="mensual">Mensual</option>
-//                 </select>
-//               </label>
-//             </div>
-
-//             <div className="control">
-//               <label for="interes">Interés (anual): 2.0 %</label>
-//             </div>
-
-//             <div className="control">
-//               <label for="plazo">Plazo: Mensual
-//               </label>
-//             </div>
-
-//             <button id="simular" onclick={simularPrestamo}>Simular préstamo</button>
-//             <button id="simular" onclick='impresion()'>Pedir préstamo</button>
-//           </div>
-//         </div>
-
-//         {/* <div>
-//         <div id="contenedorTabla">
-//           <div className="header">
-//             <h2>Simulacion</h2>
-//           </div>
-//           <div id="amortizaciones">
-//           </div>
-//         </div>
-//       </div> */}
-//       </SimuladorC>
-
+//     <h2>Pagina Simulacion (public - private)</h2>
 //     </>
 //   );
+      
 // }
 
-// export default App;
+import React from 'react';
+import styled from 'styled-components';
+
+export default function Simulador() {
+
+  const simularPrestamo = () => {
+    console.log("hola");
+  }
+
+  return (
+    <>
+      <SimuladorC>
+        <div id="contenedor">
+          <div className="header">
+            <h2>Solicitud de préstamo</h2>
+          </div>
+          <div name="frmPrestamo" id="frmPrestamo">
+
+            <div className="control">
+              <label for="fecha">Fecha: <input type="date" name="fecha" id="fecha" placeholder="fecha" /></label>
+            </div>
+
+            <div className="control">
+              <label for="monto">Monto:
+                <input type="number" name="monto" id="monto" placeholder="monto" min="500" step="500" reque></input>
+              </label>
+            </div>
+
+            <div className="control">
+              <label for="periodo">Periodo de pago:
+                <select name="periodo" id="periodo">
+                  <option value="semanal">Semanal</option>
+                  <option value="quincenal">Quincenal</option>
+                  <option value="mensual">Mensual</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="control">
+              <label for="interes">Interés (anual): 2.0 %</label>
+            </div>
+
+            <div className="control">
+              <label for="plazo">Plazo: Mensual
+              </label>
+            </div>
+
+            <button id="simular" onclick={simularPrestamo}>Simular préstamo</button>
+            <button id="simular" onclick='impresion()'>Pedir préstamo</button>
+          </div>
+        </div>
+
+        {/* <div>
+        <div id="contenedorTabla">
+          <div className="header">
+            <h2>Simulacion</h2>
+          </div>
+          <div id="amortizaciones">
+          </div>
+        </div>
+      </div> */}
+      </SimuladorC>
+
+    </>
+  );
+}
 
 
 // const SimuladorC = styled.body`
