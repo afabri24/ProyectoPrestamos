@@ -1,20 +1,19 @@
 import React from 'react';
 import { MDBFooter, MDBContainer} from 'mdb-react-ui-kit';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 export default function App() {
     return (
-        <Estilo>
             <MDBFooter className='text-center' color='white' bgColor='dark'>
                 <MDBContainer className='p-4'>
                     <section className='mb-4'>
 
                         <a href='https://www.google.com' className='me-4 text-reset'>
-                            <i class="fa fa-google" aria-hidden="true"></i>
+                            <i className="fa fa-google" aria-hidden="true"></i>
                         </a>
 
                         <a href='https://www.github.com' className='me-4 text-reset'>
-                            <i class="fa fa-github" aria-hidden="true"></i>
+                            <i className="fa fa-github" aria-hidden="true"></i>
                         </a>
 
 
@@ -36,10 +35,6 @@ export default function App() {
                     </a>
                 </div>
             </MDBFooter>
-        </Estilo>
     );
 }
 
-const Estilo = styled.body`
-margin-top: 2rem;
-`

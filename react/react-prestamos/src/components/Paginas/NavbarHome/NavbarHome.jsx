@@ -4,7 +4,7 @@ import {
   MDBNavbarToggler, MDBNavbarBrand, MDBCollapse
 } from 'mdb-react-ui-kit';
 import { MDBIcon } from 'mdbreact';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 export default function NavbarHome() {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
@@ -28,17 +28,17 @@ export default function NavbarHome() {
 
             <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
               <MDBNavbarItem className='active'>
-                <MDBNavbarLink aria-current='page' href='/Home'><i class="fa fa-fw fa-home"></i> Home
+                <MDBNavbarLink aria-current='page' href='/Home'><i className="fa fa-fw fa-home"></i> Home
                 </MDBNavbarLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>
-                <MDBNavbarLink href='/simulacion'><i class="fa fa-fw fa-calculator"></i> Simulacion
+                <MDBNavbarLink href='/simulacion'><i className="fa fa-fw fa-calculator"></i> Simulacion
                 </MDBNavbarLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>
-                <MDBNavbarLink href='/Contacto'><i class="fa fa-envelope"></i> Contacto
+                <MDBNavbarLink href='/Contacto'><i className="fa fa-envelope"></i> Contacto
                 </MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
@@ -63,11 +63,11 @@ export default function NavbarHome() {
 }
 
 
-const Estilos = styled.body`
-.active{
-  background-color: #fafafa;
-}
-`
+// const Estilos = styled.body`
+// .active{
+//   background-color: #fafafa;
+// }
+// `
 
 
 // import React, { useState } from 'react';
