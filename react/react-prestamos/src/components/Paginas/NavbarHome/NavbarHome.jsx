@@ -4,16 +4,21 @@ import {
   MDBNavbarToggler, MDBNavbarBrand, MDBCollapse
 } from 'mdb-react-ui-kit';
 import { MDBIcon } from 'mdbreact';
+import { useLocation } from 'react-router-dom';
 // import styled from 'styled-components';
 
 export default function NavbarHome() {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
   const [showNavRight] = useState(false);
 
+  const {state} = useLocation();
+  console.log(state);
+
+  // const [email, setEmail] = useState(0);
+
   return (
     <>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
 
       <MDBNavbar sticky expand='lg' dark bgColor='dark'>
         <MDBContainer fluid>
@@ -27,7 +32,7 @@ export default function NavbarHome() {
           <MDBCollapse show={showNavColorSecond} navbar id='navbarColor02'>
 
             <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
-              <MDBNavbarItem className='active'>
+              <MDBNavbarItem>
                 <MDBNavbarLink aria-current='page' href='/Home'><i className="fa fa-fw fa-home"></i> Home
                 </MDBNavbarLink>
               </MDBNavbarItem>
@@ -43,21 +48,21 @@ export default function NavbarHome() {
               </MDBNavbarItem>
             </MDBNavbarNav>
 
-            {/* right */}
-
             <MDBCollapse navbar show={showNavRight}>
               <MDBNavbarNav right fullWidth={false} className='mb-3 mb-lg-0'>
 
                 <MDBNavbarItem>
-                  <MDBNavbarLink href='/Login'> Login
+                  <MDBNavbarLink href='/Login'> Login/Registro
                   </MDBNavbarLink>
                 </MDBNavbarItem>
+
               </MDBNavbarNav>
             </MDBCollapse>
 
           </MDBCollapse>
         </MDBContainer>
-      </MDBNavbar>
+        </MDBNavbar>
+    
     </>
   );
 }

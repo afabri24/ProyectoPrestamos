@@ -16,8 +16,6 @@ pymysql.install_as_MySQLdb()
 
 from pathlib import Path
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -93,8 +91,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
         'PORT': '3306',
-        'USER': 'jorge',
-        'PASSWORD': '3141',
+        'USER': 'root',
+        'PASSWORD': '',
         'NAME': 'django_api',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"

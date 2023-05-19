@@ -20,7 +20,7 @@ export default function NavbarLogin() {
           <MDBCollapse show={showNavColorSecond} navbar id='navbarColor02'>
 
             <MDBNavbarNav className='me-auto mb-2 mb-lg-0'>
-              <MDBNavbarItem className='active'>
+              <MDBNavbarItem>
                 <MDBNavbarLink aria-current='page' href='/Home'><i class="fa fa-fw fa-home"></i> Home
                 </MDBNavbarLink>
               </MDBNavbarItem>

@@ -4,3 +4,5 @@ comando utilizado
     npm i styled-components
      npm install mdb-react-ui-kit
      npm install mdbreact
+
+     npm install sweetalert2
