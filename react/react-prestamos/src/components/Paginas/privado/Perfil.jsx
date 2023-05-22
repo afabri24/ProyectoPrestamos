@@ -21,6 +21,10 @@ import {
   MDBTabsPane
 } from 'mdb-react-ui-kit';
 import { useState } from 'react';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
 
 export default function ProfilePage({ cliente }) {
 
@@ -32,6 +36,7 @@ export default function ProfilePage({ cliente }) {
     setActive(value);
   }
 
+  console.log('name' + cookies.get('name'));
 
 
   return (
@@ -153,7 +158,7 @@ export default function ProfilePage({ cliente }) {
                         <MDBCardText>Nombre</MDBCardText>
                       </MDBCol>
                       <MDBCol sm="9">
-                        <MDBCardText className="text-muted">************</MDBCardText>
+                        <MDBCardText className="text-muted">{cookies.get('name')}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <hr />

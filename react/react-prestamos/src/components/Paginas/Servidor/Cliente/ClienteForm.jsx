@@ -31,16 +31,17 @@ const ClienteForm=()=>{
         if (!params.id) {
           res = await ClienteServer.registerCliente(cliente);
           const data = await res.json();
+          console.log(data);
           if (data.message === "Success") {
             setCliente(initialState);
-            swal("Seccess", "Usuario registrado!");
+            swal("Success", "Usuario registrado!");
           } else{
             mostrarAlerta2();
-            history.push("/");
+            // history.push("/");
           }
         } else {
           await ClienteServer.updateCliente(params.id, cliente);
-          swal("Seccess", "Cliente actualizado!");
+          swal("Success", "Cliente actualizado!");
         }
         history.push("/");
       } catch (error) {

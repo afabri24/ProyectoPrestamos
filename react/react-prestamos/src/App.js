@@ -2,24 +2,23 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
 // Componentes
-import NavbarHome from './components/Paginas/NavbarHome/NavbarHome';
-// import NavbarLogin from './components/Paginas/NavbarLogin/NavbarLogin';
+import Navbar from './components/Paginas/Navbar/Navbar';
+import Footer from './components/Paginas/Publico/Footer';
+import Error from './components/Paginas/Publico/Error';
+
 
 //publicas
-import Landing from './components/Paginas/publico/index'
-import Prestamos from './components/Paginas/publico/Prestamos';
-import SimulacionPrestamo from './components/Paginas/publico/SimulacionPrestamo';
-import Contacto from './components/Paginas/publico/Contacto';
-import Error from './components/Paginas/publico/Error';
-import Footer from './components/Paginas/publico/Footer';
-import Registro from './components/Paginas/publico/Registro';
-import Login from './components/Paginas/publico/Login';
-
+import Landing from './components/Paginas/Publico/index'
+import Prestamos from './components/Paginas/Publico/Prestamos';
+import SimulacionPrestamo from './components/Paginas/Publico/SimulacionPrestamo';
+import Contacto from './components/Paginas/Publico/Contacto';
+import Registro from './components/Paginas/Publico/Registro';
+import Login from './components/Paginas/Publico/Login';
 
 //privadas
+import perfil from './components/Paginas/Privado/Perfil';
 
-import perfil from './components/Paginas/privado/Perfil';
-
+//protegidas
 import ClienteList from './components/Paginas/Servidor/Cliente/ClienteList';
 import ClienteForm from './components/Paginas/Servidor/Cliente/ClienteForm';
 
@@ -30,28 +29,21 @@ function App() {
     return (
         <React.StrictMode>
             <BrowserRouter>
-                <NavbarHome />
+                <Navbar />
                 <Switch>
+                    {/* publicas */}
                     <Route exact path="/" component={Landing} />
-                    <Route exact path='/Home' component={Landing} />
-                    <Route exact path='/Prestamos' component={Prestamos} />
-                    <Route exact path='/Simulacion' component={SimulacionPrestamo} />
-                    <Route exact path='/Contacto' component={Contacto} />
+                    <Route exact path='/home' component={Landing} />
+                    <Route exact path='/prestamos' component={Prestamos} />
+                    <Route exact path='/simulacion' component={SimulacionPrestamo} />
+                    <Route exact path='/contacto' component={Contacto} />
+                    <Route path='/registro' component={Registro} />
+                    <Route path='/login' component={Login} />
 
-                    <Route path='/Registro' component={Registro} />
-                    <Route path='/Login' component={Login} />
-
+                    {/* privadas-cliente */}
                     <Route path='/perfil' component={perfil} />
 
-
-                    <Route path='/cliente' component={ClienteList} />
-
-
-                    {/* <Route path='/cliente' component={ClienteList} /> */}
-
-                    <Route path='/clienteForm' component={ClienteForm} />
-                    <Route path='/updateCliente/:id' component={ClienteForm} />
-
+                    {/* protegida-empleado */}
                     <Route path='*' component={Error} />
 
                 </Switch>

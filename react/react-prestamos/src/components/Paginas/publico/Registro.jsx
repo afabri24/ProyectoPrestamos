@@ -1,11 +1,33 @@
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+import { useForm } from '../Hook/useForm';
+
 
 
 import * as clienteServer from '../Servidor/Cliente/ClienteServer';
 
 export default function Registro() {
+
+    // const navigate = useNavigate();
+
+    const {email, password, onInputChange, onResetForm } =
+     useForm({
+        nombre: '',
+        apellido: '',
+        nacimiento: '',
+        rfc: '',
+        email: '',
+        telefono: '',
+        password: ''
+    })
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     history.push('/Privado/Perfil');
+    // }
 
     const history = useHistory();
     const initialState = { id: 0, name: "", apellidos: "", fechaNacimiento: "", rfc: "", correo: "", telefono: "" };
@@ -21,7 +43,9 @@ export default function Registro() {
         try {
             let res;
             res = await clienteServer.registerCliente(cliente);
+            console.log(res);
             const data = await res.json();
+            // history.push('/Privado/Perfil');
             if (data.message === "Success") {
                 setCliente(initialState);
             }

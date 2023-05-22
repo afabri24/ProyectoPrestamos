@@ -1,101 +1,87 @@
-// import { useState } from "react"
 
-import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Component } from 'react';
+import Cookies from 'universal-cookie';
+import Swal from 'sweetalert2';
+import * as ClienteServer from '../Servidor/Cliente/ClienteServer';
+// import * as ClienteServer from '../Servidor/Cliente/EmpleadoServer';
 
-// import { useForm } from "./provicional/useForm";
+const cookies = new Cookies();
 
-export default function Login() {
+class Login extends Component {
 
-    // let history = useHistory();
+    state = {
+        form: {
+            correo: '',
+            password: ''
+        }
+    }
 
-    // const {email, password, onInputChange, onResetForm } = 
-    //     useForm ({
-    //         email: '',
-    //         password: '',
-    // });
+    handleChange = async e => {
+        await this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
 
-    // const onLogin = (e) => {
-    //     e.preventDefault()
-    //     history.push('/Home', {
-    //         replace: true,
-    //         state: {
-    //             logged: true,
-    //             email: email,
-    //         },
-    //     });
+    iniciarSesion = async () => {
+        const respuesta = await ClienteServer.getClienteByCorreo(this.state.form.correo);
+        const data = await respuesta.json();
+        console.log(data);
+        if (data.message === "Seccess") {
+            if (data.clientes.password === this.state.form.password) {
+                console.log(data.clientes.password);
+                cookies.set('id', data.clientes.id, {path: "/"})
+                cookies.set('name', data.clientes.name, { path: "/" })
+                window.location.href = "../Perfil"
+            }
+            else {
+                Swal.fire("Error", "Contraseña invalida", 'error');
+            }
+        }
+        else {
+            Swal.fire("Error", "Correo invalido", 'error');
 
-    //     onResetForm();
-    // }
+        }
 
-    // const [email, setEmail] = useState();
-    // const [Pass, setPass] = useState();
-    
-    // console.log(email);
+    }
 
-    // const handleEmail = (event) => {
-    //     setEmail(event.target.value)
-    //     // onInputChange(event, 'email');
-    //     console.log(email);
-    // }
+    componentDidMount() {
+        if (cookies.get('name')) {
+            window.location.href = "../Navbar";
+        }
+    }
 
-    // const handlePass = (event) => {
-    //     setPass(event.target.value);
-    //     // onInputChange(event, 'password');
-    //     console.log(Pass);
-    // }
-
-
-    return (
-        <>
-
-        <form>
-            <h2>Pagina Login (public)</h2>
-
-            <div>
-            <label htmlFor='email'>Email: </label>
-                <input 
-                    type="text"
-                    name="email"
-                    id="email"
-                    required
-                    autoComplete='off' 
-                />
+    render() {
+        return (
+            <div className="containerPrincipal">
+                <div className="containerSecundario">
+                    <div className="form-group">
+                        <label>Usuario: </label>
+                        <br />
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="correo"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <label>Contraseña: </label>
+                        <br />
+                        <input
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            onChange={this.handleChange}
+                        />
+                        <br />
+                        <button className="btn btn-primary" onClick={() => this.iniciarSesion()}>Iniciar Sesión</button>
+                    </div>
+                </div>
             </div>
-
-            <div>
-            <label htmlFor='Password'>Contraseña: </label>
-                <input 
-                    type="password"
-                    name="Password"
-                    id="Password"
-
-                    required
-                    autoComplete='off' 
-                />
-                
-            </div>
-
-            <button>Entrar</button>
-
-            <Link to={"/Registro"}><button>Registro</button></Link>
-
-
-        </form>
-        </>
-    );
-
+        );
+    }
 }
 
-
-
-
-
-// export default function Login() {
-//     return (
-//         <>
-//             <h2>Pagina Login (public)</h2>
-//         </>
-//     );
-        
-// }
+export default Login;
